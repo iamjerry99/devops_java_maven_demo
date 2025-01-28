@@ -1,20 +1,29 @@
-//enter code 
-name: java ci wiht maven
+name: Java Maven CI
+
 on:
-  push:   
-    branches: [ "main" ]
-  pull_request: 
-    branches: [ "main" ]
-jobs: 
-  build: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
     runs-on: ubuntu-latest
-    steps: 
-    - uses: actions/checkout@v4
-    - name: setup jdk 17  
-      uses: actions/setup-java@v4
-      with: 
-        java-version: '17'
+
+    steps:
+    # Step 1: Check out the repository code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Java
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: 11
         distribution: 'temurin'
-        cache: maven
-    //simple javva ci pippline
-    
+
+    # Step 3: Build and test using Maven
+    - name: Build with Maven
+      run: mvn clean verify
