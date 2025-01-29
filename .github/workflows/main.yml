@@ -1,4 +1,4 @@
-name: Java Maven CI dated on 29/1/25
+name: Java Maven C-I dated on 29/1/25
 
 on:
   push:
